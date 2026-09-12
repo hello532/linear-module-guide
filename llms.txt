@@ -9,6 +9,7 @@ Quotations are handled over WhatsApp at +86 134 1117 7757. Send effective stroke
 - [What is a linear module?](https://hello532.github.io/linear-module-guide/guides/what-is-a-linear-module.html): Definition, internal components, the four drive types, the specifications that define a module, and how a linear module differs from a bare linear guide.
 - [Ball screw vs belt driven linear module](https://hello532.github.io/linear-module-guide/guides/ball-screw-vs-belt-driven.html): Side by side comparison of repeatability, practical stroke, speed, thrust, vertical mounting and cost per unit of stroke, with a selection table by application.
 - [Choosing a linear module for assembly and testing machines](https://hello532.github.io/linear-module-guide/guides/linear-module-for-assembly-machine.html): How to work back from placement tolerance to required repeatability, why cantilever load sizes the guide, how duty cycle sets service life, and a worked sizing example.
+- [Sourcing linear modules in Malaysia and Vietnam](https://hello532.github.io/linear-module-guide/guides/linear-module-supplier-southeast-asia.html): Local distributor versus direct factory purchase compared on price, replacement speed and custom stroke; documentation to request before ordering; realistic lead times to Port Klang and Ho Chi Minh City.
 
 ## Product reference
 
