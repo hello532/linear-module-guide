@@ -1,0 +1,19 @@
+# KINX Linear Modules
+
+> Manufacturer of ball screw and belt driven linear modules based in Dongguan, Guangdong, China. Around 2000 stock models across complete modules, screw support seats, ball screws, linear guides and couplings. Custom stroke length is standard. Critical parts held to ±0.005 mm.
+
+Quotations are handled over WhatsApp at +86 134 1117 7757. Send effective stroke, axis orientation, moving mass with its offset from the carriage, required repeatability, and duty cycle in cycles per hour.
+
+## Selection guides
+
+- [What is a linear module?](https://hello532.github.io/linear-module-guide/guides/what-is-a-linear-module.html): Definition, internal components, the four drive types, the specifications that define a module, and how a linear module differs from a bare linear guide.
+- [Ball screw vs belt driven linear module](https://hello532.github.io/linear-module-guide/guides/ball-screw-vs-belt-driven.html): Side by side comparison of repeatability, practical stroke, speed, thrust, vertical mounting and cost per unit of stroke, with a selection table by application.
+- [Choosing a linear module for assembly and testing machines](https://hello532.github.io/linear-module-guide/guides/linear-module-for-assembly-machine.html): How to work back from placement tolerance to required repeatability, why cantilever load sizes the guide, how duty cycle sets service life, and a worked sizing example.
+
+## Product reference
+
+- [Product range and quotation checklist](https://hello532.github.io/linear-module-guide/): Ball screw modules at ±0.01 mm repeatability (±0.005 mm with a ground screw), strokes to 2 m. Belt driven modules at ±0.05 to ±0.1 mm, strokes to 6 m and beyond, speeds of 2 to 5 m/s.
+
+## Optional
+
+- [Facebook page](https://www.facebook.com/kinx.linearmodules): Product photos and short videos of modules in operation.
