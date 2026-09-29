@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ball Screw vs Belt Driven Linear Module: How to Choose | KINX</title>
-<meta name="description" content="Ball screw modules win on precision and vertical axes; belt driven win on long stroke and speed. Compare accuracy, stroke, thrust and cost in one table.">
+<title>Ball Screw vs Belt Driven Linear Module | KINX</title>
+<meta name="description" content="Belt driven for long stroke and speed, ball screw for precision. How to choose, and the linear speed formula: motor speed / 60 x lead.">
 <link rel="canonical" href="https://hello532.github.io/linear-module-guide/guides/ball-screw-vs-belt-driven.html">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Which is more accurate, a ball screw or a belt driven linear module?","acceptedAnswer":{"@type":"Answer","text":"A ball screw linear module is more accurate. Typical repeatability is plus or minus 0.01 mm to 0.02 mm, and precision-ground screws reach plus or minus 0.005 mm on critical parts. A belt driven module typically holds plus or minus 0.05 mm to 0.1 mm because the belt itself stretches under load."}},
-{"@type":"Question","name":"Can a belt driven linear module be mounted vertically?","acceptedAnswer":{"@type":"Answer","text":"It can, but it needs a brake or a counterweight. A belt driven module is not self-locking, so the carriage back-drives when power is lost. A ball screw module with a lead of 5 mm or less is close to self-locking and is the safer choice for vertical Z axes."}},
-{"@type":"Question","name":"What is the maximum practical stroke for each type?","acceptedAnswer":{"@type":"Answer","text":"Belt driven modules are practical up to 6 m and beyond in a single axis. Ball screw modules are usually limited to about 1.5 m to 2 m because the screw begins to whip above its critical speed, which forces a lower travel speed as length grows."}},
-{"@type":"Question","name":"Which type is cheaper?","acceptedAnswer":{"@type":"Answer","text":"Per unit of stroke, belt driven is cheaper, and the gap widens as stroke grows because only the belt and profile get longer. For short strokes under 300 mm the two are close, and the decision should be made on accuracy and orientation rather than price."}}]}
+{"@type":"Question","name":"Ball screw or belt driven, which is more accurate?","acceptedAnswer":{"@type":"Answer","text":"Ball screw. KINX publishes repeatability of 0.003–0.01 mm on its ball screw modules, with C and P accuracy grades on KK60 and KK86. A belt drive is elastic under load, so it cannot hold that class."}},
+{"@type":"Question","name":"When is a belt driven module the better choice?","acceptedAnswer":{"@type":"Answer","text":"On long strokes where cycle speed matters more than micron precision, such as transfer axes. A belt does not whip the way a long screw does, so it is the usual choice when the axis gets long."}},
+{"@type":"Question","name":"How do I calculate the linear speed of an axis?","acceptedAnswer":{"@type":"Answer","text":"Linear speed equals motor speed divided by 60, multiplied by the lead: mm/s = rpm / 60 x lead (mm). For example, 3000 rpm on a 10 mm lead gives 500 mm/s."}},
+{"@type":"Question","name":"How long can a ball screw axis be?","acceptedAnswer":{"@type":"Answer","text":"KINX KK60 takes effective strokes of 20–810 mm and KK86 takes 50–1310 mm, any length in the range. KK50 takes standard strokes only: 70, 120, 170 and 220 mm."}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -24,9 +24,11 @@
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.7 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
 .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--acc)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;padding:8px 14px;z-index:10}
+.skip:focus{left:8px;top:8px;border:1px solid var(--acc)}
 header{border-bottom:1px solid var(--line)}
 header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
-a{color:var(--acc)}
 h1{font-size:31px;line-height:1.3;margin:28px 0 10px}
 h2{font-size:22px;margin:34px 0 10px;padding-top:6px}
 h3{font-size:17px;margin:22px 0 6px}
@@ -37,83 +39,84 @@ th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-ali
 th{background:#f7f9fb;font-weight:600}
 nav.bc{font-size:14px;color:var(--mut);padding-top:16px}
 footer{border-top:1px solid var(--line);margin-top:48px;padding:24px 0;font-size:14px;color:var(--mut)}
-.cta{display:inline-block;background:var(--acc);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600}
+.cta{display:inline-block;background:var(--acc);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 10px 6px 0}
+.cta.alt{background:#fff;color:var(--acc);border:2px solid var(--acc)}
+.formula{background:#f7f9fb;border:1px solid var(--line);border-radius:6px;padding:12px 16px;font-size:17px;margin:14px 0}
 </style>
 </head>
 <body>
-<header><div class="wrap"><strong>KINX Linear Modules</strong><span style="font-size:14px;color:#5b6470">Dongguan, China</span></div></header>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap"><strong><a href="../index.html" style="text-decoration:none;color:inherit">KINX Linear Modules</a></strong><span style="font-size:14px;color:#5b6470"><a href="https://hello532.github.io/kinxfa/">Product site &rarr;</a></span></div></header>
+<main id="main">
 <div class="wrap">
 <nav class="bc" aria-label="Breadcrumb"><a href="../index.html">Home</a> &rsaquo; Guides &rsaquo; Ball Screw vs Belt Driven</nav>
-<h1>Ball Screw vs Belt Driven Linear Module: How to Choose</h1>
-<p class="lede">Both move a load along one axis. They fail in different places, and that is what decides the choice.</p>
+<h1>Ball screw vs belt driven</h1>
+<p class="lede">Both move a load along one axis. They differ in where the accuracy comes from and how the axis behaves as it gets longer.</p>
 
 <div class="verdict">
-<strong>Short answer.</strong> Choose a <strong>ball screw</strong> module when you need repeatability tighter than &plusmn;0.02&nbsp;mm, a vertical axis, or a high thrust push. Choose a <strong>belt driven</strong> module when stroke is over 1.5&nbsp;m, cycle speed matters more than precision, or the axis is horizontal transfer. At strokes under 300&nbsp;mm the cost gap is small, so decide on accuracy and orientation instead.
+<strong>Short answer.</strong> When the axis gets long and speed matters more than micron precision, choose a <strong>belt driven</strong> module. When precision comes first, choose a <strong>ball screw</strong> module. A screw whips as it gets longer, which is the practical reason long transfer axes are usually belt driven.
 </div>
 
 <h2>Side by side</h2>
 <table>
 <thead><tr><th>Criterion</th><th>Ball screw module</th><th>Belt driven module</th></tr></thead>
 <tbody>
-<tr><td>Repeatability</td><td>&plusmn;0.01 to &plusmn;0.02 mm, ground screw to &plusmn;0.005 mm</td><td>&plusmn;0.05 to &plusmn;0.1 mm</td></tr>
-<tr><td>Practical stroke</td><td>Up to about 1.5 to 2 m</td><td>6 m and beyond</td></tr>
-<tr><td>Max speed</td><td>0.5 to 1 m/s, drops as length grows</td><td>2 to 5 m/s, largely length independent</td></tr>
-<tr><td>Thrust</td><td>High, screw multiplies motor torque</td><td>Limited by belt tension and tooth shear</td></tr>
-<tr><td>Vertical use</td><td>Yes, lead 5 mm or less is near self-locking</td><td>Only with a brake or counterweight</td></tr>
-<tr><td>Back-drive on power loss</td><td>Resists</td><td>Drops, needs a brake</td></tr>
-<tr><td>Noise</td><td>Lower</td><td>Higher at speed</td></tr>
-<tr><td>Wear part</td><td>Screw and nut, needs lubrication</td><td>Belt, needs re-tension and replacement</td></tr>
-<tr><td>Cost per unit stroke</td><td>Rises with length</td><td>Nearly flat with length</td></tr>
+<tr><td>Repeatability</td><td>0.003&ndash;0.01 mm published</td><td>Lower &mdash; the belt is elastic under load</td></tr>
+<tr><td>Long stroke</td><td>Limited by screw whip as length grows</td><td>The usual choice for long transfer axes</td></tr>
+<tr><td>Speed</td><td>Set by lead; a long screw must run slower</td><td>The choice for long stroke at speed</td></tr>
+<tr><td>Precision priority</td><td>The choice</td><td>Not the choice</td></tr>
+<tr><td>Typical use</td><td>Positioning axes, Z axes</td><td>Long transfer axes</td></tr>
 </tbody>
 </table>
 
-<h2>Why ball screws are more accurate</h2>
-<p>A ball screw converts motor rotation into linear travel through a rigid metal thread. The path from motor to carriage has almost no elastic element, so commanded position and actual position stay close. Lead error is a machining property of the screw and can be graded and compensated.</p>
-<p>A toothed belt is elastic by design. Under acceleration or a sudden load change, the belt stretches slightly and the carriage lags, then overshoots. That elasticity is also why belt drives tolerate shock better, but it puts a floor under achievable repeatability.</p>
+<h2>Why precision favors the ball screw</h2>
+<p>A ball screw converts motor rotation into travel through a rigid metal thread, so the path from motor to carriage has almost no elastic element. KINX publishes repeatability of 0.003&ndash;0.01&nbsp;mm, and KK60 and KK86 are available in C and P accuracy grades. A toothed belt is elastic by design: under acceleration the belt stretches slightly and the carriage lags, which puts a floor under achievable repeatability.</p>
 
-<h2>Why belt drives win on long stroke</h2>
-<p>A rotating screw has a critical speed. Above it the screw whips and vibrates, and that speed <em>falls</em> as the screw gets longer. A 2&nbsp;m screw must therefore run slower than a 0.5&nbsp;m screw, which is the practical ceiling on long ball screw axes.</p>
-<p>A belt has no such limit. Lengthening the axis adds belt and profile, not rotating mass, so speed stays roughly constant. Cost scales the same way, which is why gantries and transfer axes are usually belt driven.</p>
+<h2>Why long stroke favors the belt</h2>
+<p>A rotating screw has a critical speed: past it, the screw whips and vibrates. The longer the screw, the lower that critical speed becomes, so a long ball screw axis must run slower. A belt does not have that failure mode &mdash; lengthening the axis adds belt and profile, not a long rotating shaft. That is why long transfer axes and gantries are usually belt driven, while short precision axes are ball screw.</p>
 
-<h2>The vertical axis question</h2>
-<p>This one is a safety decision, not a preference. A belt driven carriage back-drives when power is cut: the load falls. A ball screw with a lead of 5&nbsp;mm or less has enough internal friction to resist back-driving, which is why Z axes on pick and place machines are usually ball screw driven. If a belt drive must be used vertically, a motor brake is not optional.</p>
+<h2>Calculating axis speed</h2>
+<p>For both drive types, linear speed comes from how fast the motor turns and how far one revolution moves the carriage (the lead):</p>
+<div class="formula">linear speed (mm/s) = motor speed (rpm) &divide; 60 &times; lead (mm)</div>
+<p>Example: a motor at 3000&nbsp;rpm on a 10&nbsp;mm lead gives 3000 &divide; 60 &times; 10 = 500&nbsp;mm/s. The lead is the number you trade against thrust and resolution &mdash; a larger lead moves faster per revolution, a smaller lead gives finer positioning per step.</p>
 
-<h2>Selection by application</h2>
+<h2>Stroke ranges by series</h2>
 <table>
-<thead><tr><th>Application</th><th>Recommended</th><th>Reason</th></tr></thead>
+<thead><tr><th>Series</th><th>Effective stroke</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>Assembly machine Z axis</td><td>Ball screw, lead 5 mm</td><td>Vertical hold plus placement accuracy</td></tr>
-<tr><td>Testing equipment probe axis</td><td>Ball screw, ground</td><td>Repeatability drives measurement validity</td></tr>
-<tr><td>Long horizontal transfer, 3 m plus</td><td>Belt driven</td><td>Stroke and speed dominate</td></tr>
-<tr><td>Gantry X axis over a work area</td><td>Belt driven</td><td>Cost per metre and speed</td></tr>
-<tr><td>Press or insertion axis</td><td>Ball screw</td><td>Thrust requirement</td></tr>
-<tr><td>Camera or sensor scan axis</td><td>Belt driven</td><td>Light load, speed over precision</td></tr>
+<tr><td>KK50</td><td>70 / 120 / 170 / 220 mm</td><td>Standard strokes only, no custom lengths</td></tr>
+<tr><td>KK60</td><td>20&ndash;810 mm</td><td>Any length in the range</td></tr>
+<tr><td>KK86</td><td>50&ndash;1310 mm</td><td>Any length in the range</td></tr>
 </tbody>
 </table>
+<p>Production models: KK5002; KK6005 / KK6010 / KK6020; KK8610 / KK8620; and KK10020, expected early 2026. Full details on the <a href="https://hello532.github.io/kinxfa/kk-modules.html">KK series page</a>.</p>
 
-<h2>Three specs to fix before you ask for a quote</h2>
-<p>Most quoting delays come from missing these:</p>
+<h2>Accuracy grades, C and P</h2>
+<p>KK60 and KK86 ball screw modules come in C and P grades. The grade figures (all in mm):</p>
+<table>
+<thead><tr><th>Grade</th><th>Repeatability</th><th>Positioning accuracy</th></tr></thead>
+<tbody>
+<tr><td>C grade KK60</td><td>&plusmn;0.005 mm</td><td>0.04&ndash;0.07 mm</td></tr>
+<tr><td>C grade KK86</td><td>&plusmn;0.0055 mm</td><td>0.04&ndash;0.07 mm</td></tr>
+<tr><td>P grade KK60</td><td>&plusmn;0.003 mm</td><td>0.02&ndash;0.025 mm</td></tr>
+<tr><td>P grade KK86</td><td>&plusmn;0.003 mm</td><td>0.025&ndash;0.04 mm</td></tr>
+</tbody>
+</table>
+<p>Repeatability is how closely the axis returns to the same commanded point; positioning accuracy is how close that point is to the true coordinate. Assembly machines usually care about repeatability first, because a fixed offset can be taught out.</p>
+
+<h2>Three things to fix before asking for a quote</h2>
 <h3>1. Stroke, and whether it is fixed</h3>
-<p>Effective stroke, not overall length. A custom stroke is normal on both types; say the number and the tolerance you can live with.</p>
+<p>Effective stroke, not overall length. Custom lengths are routine on KK60 and KK86; KK50 takes standard strokes only.</p>
 <h3>2. Orientation and load</h3>
-<p>Horizontal, vertical, or wall mounted, plus the moving mass and where its centre of gravity sits relative to the carriage. An offset load changes the bearing selection.</p>
-<h3>3. Duty cycle</h3>
-<p>Cycles per hour and hours per day. A module that is fine at 200 cycles per hour may need a larger screw or a wider belt at 2000.</p>
+<p>Horizontal or vertical &mdash; both mounting orientations are supported. State the moving mass and where its centre of gravity sits relative to the carriage, because an offset load changes the bearing selection.</p>
+<h3>3. Speed and duty cycle</h3>
+<p>Give the speed you need at the carriage and the cycles per hour, hours per day. Together with the lead, that fixes the motor side of the selection. Motor adaptation: KK50 servo 50/100&nbsp;W, stepper 42; KK60 servo 50/100/200/400&nbsp;W, stepper 42/57/60; KK86 servo 50/100/200/400/750&nbsp;W, stepper 57/60/86.</p>
 
-<h2>Frequently asked</h2>
-<h3>Which is more accurate?</h3>
-<p>Ball screw. Typical repeatability is &plusmn;0.01 to &plusmn;0.02&nbsp;mm against &plusmn;0.05 to &plusmn;0.1&nbsp;mm for belt driven, because the belt stretches under load.</p>
-<h3>Can a belt driven module be mounted vertically?</h3>
-<p>Only with a brake or counterweight. It is not self-locking and will back-drive on power loss.</p>
-<h3>What is the maximum practical stroke?</h3>
-<p>Belt driven is practical to 6&nbsp;m and beyond. Ball screw is usually capped near 1.5 to 2&nbsp;m by critical speed.</p>
-<h3>Which is cheaper?</h3>
-<p>Belt driven per unit of stroke, and the gap widens with length. Under 300&nbsp;mm they are close enough that accuracy should decide.</p>
-
-<h2>Get a datasheet</h2>
-<p>KINX builds both types in Dongguan, China, with custom stroke lengths and roughly 2000 stock models across screw support seats, ball screws, linear guides, couplings and complete modules. Send stroke, orientation, moving mass and duty cycle, and you get a datasheet and a quotation back.</p>
-<p><a class="cta" href="https://wa.me/8613411177757">Request a datasheet on WhatsApp</a></p>
+<h2>Get a proposal in 6 hours</h2>
+<p>Send stroke, orientation, moving mass and duty cycle, and KINX comes back with a proposal in 6 hours. Standard KK60 and KK86, 50&ndash;100 units: 2&ndash;3 days; rush orders 1&ndash;2 days. Fastest delivery is 24 hours. See the <a href="https://hello532.github.io/kinxfa/linear-modules.html">full module range</a> for belt driven and embedded options.</p>
+<p><a class="cta" href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> <a class="cta alt" href="mailto:kinxauto@gmail.com">Email kinxauto@gmail.com</a></p>
 </div>
-<footer><div class="wrap">KINX Linear Modules &middot; Dongguan, Guangdong, China &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
+</main>
+<footer><div class="wrap">KINX &middot; Dongguan, Guangdong, China &middot; <a href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> &middot; <a href="mailto:kinxauto@gmail.com">kinxauto@gmail.com</a> &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
 </body>
 </html>

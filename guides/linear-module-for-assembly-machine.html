@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Choosing a Linear Module for Assembly and Testing Machines | KINX</title>
-<meta name="description" content="How to size a linear module for assembly and testing machines: accuracy class, orientation, duty cycle, cantilever load, and the specs needed to quote.">
+<title>Linear Module for Assembly Machines: 5-Step Sizing | KINX</title>
+<meta name="description" content="Five steps to size a linear module for an assembly machine: stroke, load and orientation, speed, accuracy, environment. Published KINX figures only.">
 <link rel="canonical" href="https://hello532.github.io/linear-module-guide/guides/linear-module-for-assembly-machine.html">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"What accuracy do I need for an assembly machine linear module?","acceptedAnswer":{"@type":"Answer","text":"Match repeatability to roughly one third of your placement tolerance. For a 0.1 mm placement tolerance, target plus or minus 0.03 mm repeatability, which a standard ball screw module meets. For connector or optical assembly at 0.02 mm tolerance you need a precision ground screw at plus or minus 0.005 mm."}},
-{"@type":"Question","name":"How does duty cycle change the module I should buy?","acceptedAnswer":{"@type":"Answer","text":"Duty cycle sets service life, not accuracy. At 200 cycles per hour a standard module lasts years. Above roughly 1500 cycles per hour the screw, nut and bearing blocks need to be sized up, or lubrication intervals shorten sharply. Always state cycles per hour and hours per day when asking for a quote."}},
-{"@type":"Question","name":"Do I need a ball screw or a belt drive for a testing machine probe axis?","acceptedAnswer":{"@type":"Answer","text":"Use a ball screw. On a testing machine the probe position is part of the measurement, so repeatability directly limits data validity. A belt driven axis at plus or minus 0.05 to 0.1 mm adds measurement uncertainty that cannot be calibrated away cycle to cycle."}},
-{"@type":"Question","name":"What is cantilever load and why does the supplier ask about it?","acceptedAnswer":{"@type":"Answer","text":"Cantilever load is a mass mounted away from the carriage centre, which creates a moment the bearings must absorb. A 5 kg tool 200 mm off centre loads the guide far more than 5 kg mounted directly on the carriage. Without the offset distance, a supplier cannot select the guide size correctly."}}]}
+{"@type":"Question","name":"How do I size a linear module for an assembly machine?","acceptedAnswer":{"@type":"Answer","text":"Work through five questions in order: effective stroke, moving load and mounting orientation, speed, required accuracy, and environment. Each one narrows the choice of series, drive type and accuracy grade."}},
+{"@type":"Question","name":"What accuracy can KINX hold?","acceptedAnswer":{"@type":"Answer","text":"KINX publishes positioning accuracy of ±0.01 mm and repeatability of 0.003–0.01 mm. KK60 and KK86 ball screw modules come in C and P grades with tighter repeatability figures."}},
+{"@type":"Question","name":"How do I calculate the speed of the axis?","acceptedAnswer":{"@type":"Answer","text":"Linear speed equals motor speed divided by 60, multiplied by the lead: mm/s = rpm / 60 x lead (mm). Choose the lead against the speed you need, then check the motor wattage for the series."}},
+{"@type":"Question","name":"Which environment needs which enclosure?","acceptedAnswer":{"@type":"Answer","text":"The environment decides between fully enclosed, semi-enclosed and bellows-protected versions. State dust, chips, glue splash or corrosion risk so the seal type can be matched to the machine."}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -24,9 +24,11 @@
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.7 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
 .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--acc)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;padding:8px 14px;z-index:10}
+.skip:focus{left:8px;top:8px;border:1px solid var(--acc)}
 header{border-bottom:1px solid var(--line)}
 header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
-a{color:var(--acc)}
 h1{font-size:31px;line-height:1.3;margin:28px 0 10px}
 h2{font-size:22px;margin:34px 0 10px}
 h3{font-size:17px;margin:22px 0 6px}
@@ -37,88 +39,103 @@ th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-ali
 th{background:#f7f9fb;font-weight:600}
 nav.bc{font-size:14px;color:var(--mut);padding-top:16px}
 footer{border-top:1px solid var(--line);margin-top:48px;padding:24px 0;font-size:14px;color:var(--mut)}
-.cta{display:inline-block;background:var(--acc);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600}
+.cta{display:inline-block;background:var(--acc);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 10px 6px 0}
+.cta.alt{background:#fff;color:var(--acc);border:2px solid var(--acc)}
+.formula{background:#f7f9fb;border:1px solid var(--line);border-radius:6px;padding:12px 16px;font-size:17px;margin:14px 0}
 ol li{margin:7px 0}
 </style>
 </head>
 <body>
-<header><div class="wrap"><strong>KINX Linear Modules</strong><span style="font-size:14px;color:#5b6470">Dongguan, China</span></div></header>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap"><strong><a href="../index.html" style="text-decoration:none;color:inherit">KINX Linear Modules</a></strong><span style="font-size:14px;color:#5b6470"><a href="https://hello532.github.io/kinxfa/">Product site &rarr;</a></span></div></header>
+<main id="main">
 <div class="wrap">
 <nav class="bc" aria-label="Breadcrumb"><a href="../index.html">Home</a> &rsaquo; Guides &rsaquo; Assembly and Testing Machines</nav>
-<h1>Choosing a Linear Module for Assembly and Testing Machines</h1>
-<p class="lede">Five numbers decide the module. Get them wrong and you either overpay or rebuild the axis six months in.</p>
+<h1>Choosing a linear module for assembly and testing machines</h1>
+<p class="lede">Five questions decide the module. Answer them in order and the shortlist writes itself.</p>
 
 <div class="verdict">
-<strong>Short answer.</strong> Fix these five before shortlisting: <strong>required repeatability</strong> (about one third of your placement tolerance), <strong>stroke</strong>, <strong>axis orientation</strong>, <strong>moving mass with its offset from the carriage</strong>, and <strong>duty cycle</strong> in cycles per hour. For most assembly machines that lands on a ball screw module at &plusmn;0.01 to &plusmn;0.02&nbsp;mm; for optical or connector work, a ground screw at &plusmn;0.005&nbsp;mm.
+<strong>Short answer.</strong> Work through: <strong>1. effective stroke</strong>, <strong>2. moving load and mounting orientation</strong>, <strong>3. speed</strong>, <strong>4. required accuracy</strong>, <strong>5. environment</strong>. Send those five to a supplier and you get a proposal back in 6 hours.
 </div>
 
-<h2>1. Accuracy: work back from your tolerance</h2>
-<p>Do not start from the module spec sheet. Start from the tolerance the finished product must hold, then give the axis roughly one third of it as a budget. The remainder is consumed by fixturing, tool compliance, thermal drift and the part itself.</p>
+<h2>1. Stroke: effective, not overall</h2>
+<p>Effective stroke is the usable travel; overall length adds the housing, motor mount and end caps, and it is what has to fit your frame. State both: the travel you need and the envelope you have.</p>
 <table>
-<thead><tr><th>Application tolerance</th><th>Target repeatability</th><th>Typical module</th></tr></thead>
+<thead><tr><th>Series</th><th>Effective stroke</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>&plusmn;0.5 mm (packaging, transfer)</td><td>&plusmn;0.1 mm</td><td>Belt driven</td></tr>
-<tr><td>&plusmn;0.1 mm (general assembly)</td><td>&plusmn;0.03 mm</td><td>Standard ball screw</td></tr>
-<tr><td>&plusmn;0.05 mm (screwdriving, dispensing)</td><td>&plusmn;0.015 mm</td><td>Ball screw, C7 or better</td></tr>
-<tr><td>&plusmn;0.02 mm (connector, optical)</td><td>&plusmn;0.005 mm</td><td>Ground ball screw, preloaded nut</td></tr>
+<tr><td>KK50</td><td>70 / 120 / 170 / 220 mm</td><td>Standard strokes only, no custom lengths</td></tr>
+<tr><td>KK60</td><td>20&ndash;810 mm</td><td>Any length in the range</td></tr>
+<tr><td>KK86</td><td>50&ndash;1310 mm</td><td>Any length in the range</td></tr>
 </tbody>
 </table>
-<p>Note the distinction the datasheet makes: <strong>repeatability</strong> is how closely the axis returns to the same commanded point, <strong>positioning accuracy</strong> is how close that point is to the true coordinate. Assembly machines usually care about the first, because a fixed offset can be taught out. Measurement systems care about both.</p>
+<p>So a 500 mm axis is routine: it falls inside both the KK60 and the KK86 range. A 70 mm axis is the smallest KK50 standard stroke, and KK50 takes standard strokes only.</p>
 
-<h2>2. Orientation drives the drive type</h2>
-<p>A vertical axis is a safety question. A belt driven carriage back-drives when power is lost and the load falls. A ball screw with a lead of 5&nbsp;mm or less is close to self-locking, which is why Z axes on pick and place stations are ball screw driven. If the axis is vertical and you still want a belt, budget for a motor brake.</p>
-<p>Wall or inverted mounting changes which bearing face carries the load. Say the orientation explicitly rather than sending only a stroke number.</p>
+<h2>2. Load and orientation</h2>
+<p>Give the moving mass <em>and</em> where its centre of gravity sits relative to the carriage. A gripper bolted flat on the carriage is a different load case from the same mass on a long bracket, because the offset creates a moment the linear guide must absorb. That moment, not the mass alone, usually decides the guide size.</p>
+<p>Mounting orientation matters twice. First, horizontal and vertical mounting are both supported, but they change which bearing face carries the load. Second, a vertical axis is a safety question &mdash; state it explicitly rather than sending only a stroke number.</p>
 
-<h2>3. Moving mass, and how far off centre it sits</h2>
-<p>This is the specification most enquiries omit. A 5&nbsp;kg gripper bolted flat on the carriage is a different load case from the same 5&nbsp;kg on a 200&nbsp;mm bracket, because the offset creates a moment the linear guide must absorb. That moment, not the mass, usually decides the guide rail size.</p>
-<p>Give three things: moving mass in kg, the offset distance from the carriage face, and whether the load overhangs along the travel axis or across it.</p>
+<h2>3. Speed</h2>
+<p>Speed sets the drive and the lead. The relationship between motor and carriage is fixed:</p>
+<div class="formula">linear speed (mm/s) = motor speed (rpm) &divide; 60 &times; lead (mm)</div>
+<p>A larger lead moves faster per revolution; a smaller lead gives finer positioning per step. Once the speed is known, the motor side of the selection follows from the series. Motor adaptation: KK50 servo 50/100&nbsp;W, stepper 42; KK60 servo 50/100/200/400&nbsp;W, stepper 42/57/60; KK86 servo 50/100/200/400/750&nbsp;W, stepper 57/60/86.</p>
+<p>Also state the duty cycle: cycles per hour and hours per day. Duty cycle does not change the accuracy you get on day one; it changes how long you keep it.</p>
 
-<h2>4. Duty cycle sets life, not precision</h2>
-<p>A module that performs perfectly at 200 cycles per hour can wear out in months at 2000. Duty cycle does not change the accuracy you get on day one; it changes how long you keep it. Above roughly 1500 cycles per hour, expect to size up the screw and nut, add automatic lubrication, or shorten the maintenance interval.</p>
-<p>State cycles per hour <em>and</em> hours per day. A machine running 500 cycles per hour across three shifts is a heavier duty case than 1500 cycles per hour for one shift.</p>
+<h2>4. Accuracy</h2>
+<p>Do not start from the datasheet; start from the tolerance the finished product must hold, then budget a fraction of it for the axis. The rest is consumed by fixturing, tool compliance, thermal drift and the part itself.</p>
+<p>Two different numbers get confused here. <strong>Repeatability</strong> is how closely the axis returns to the same commanded point. <strong>Positioning accuracy</strong> is how close that point is to the true coordinate. Assembly machines usually care about repeatability first, because a fixed offset can be taught out. KINX publishes positioning accuracy of &plusmn;0.01&nbsp;mm and repeatability of 0.003&ndash;0.01&nbsp;mm. Where the axis needs a defined grade, KK60 and KK86 ball screw modules are available in C and P grades (mm):</p>
+<table>
+<thead><tr><th>Grade</th><th>Repeatability</th><th>Positioning accuracy</th><th>Parallelism</th></tr></thead>
+<tbody>
+<tr><td>C grade KK60</td><td>&plusmn;0.005 mm</td><td>0.04&ndash;0.07 mm</td><td>0.015&ndash;0.03 mm</td></tr>
+<tr><td>C grade KK86</td><td>&plusmn;0.0055 mm</td><td>0.04&ndash;0.07 mm</td><td>0.025&ndash;0.05 mm</td></tr>
+<tr><td>P grade KK60</td><td>&plusmn;0.003 mm</td><td>0.02&ndash;0.025 mm</td><td>0.01&ndash;0.015 mm</td></tr>
+<tr><td>P grade KK86</td><td>&plusmn;0.003 mm</td><td>0.025&ndash;0.04 mm</td><td>0.015&ndash;0.03 mm</td></tr>
+</tbody>
+</table>
+<p>Grade figures and published values are consistent: the standard positioning accuracy of &plusmn;0.01&nbsp;mm sits alongside the grade table, not against it. KINX modules have shipped into vision labeling machines and medical equipment.</p>
 
-<h2>5. Stroke: effective, not overall</h2>
-<p>Effective stroke is the usable travel. Overall length adds the housing, motor mount and end caps, and it is what has to fit your frame. Custom stroke lengths are routine on both ball screw and belt driven modules, so give the travel you need plus the envelope you have.</p>
+<h2>5. Environment</h2>
+<p>The environment decides the enclosure: fully enclosed, semi-enclosed, or bellows-protected. State what the axis will see &mdash; dust, chips, glue splash, corrosion risk &mdash; and the seal type gets matched to the machine. A clean room and a machining cell take different versions of the same stroke and accuracy.</p>
 
-<h2>Worked example: a test station probe axis</h2>
-<p>A functional tester presses a probe onto a PCB pad at &plusmn;0.03&nbsp;mm, 900 cycles per hour, two shifts. The probe head is 1.2&nbsp;kg mounted 60&nbsp;mm forward of the carriage. Travel is 150&nbsp;mm, vertical.</p>
+<h2>Worked order: a 500 mm transfer axis</h2>
 <ol>
-<li>Tolerance &plusmn;0.03&nbsp;mm &rarr; target repeatability about &plusmn;0.01&nbsp;mm &rarr; ball screw, not belt.</li>
-<li>Vertical &rarr; lead 5&nbsp;mm for near self-locking behaviour.</li>
-<li>1.2&nbsp;kg at 60&nbsp;mm offset &rarr; small moment, a compact guide size is adequate.</li>
-<li>900 cycles per hour over two shifts &rarr; mid duty, specify a lubrication port and a grease interval.</li>
-<li>150&nbsp;mm effective stroke &rarr; short axis, so critical speed is not a constraint.</li>
+<li>Stroke: 500 mm effective &rarr; inside KK60 and KK86 range.</li>
+<li>Load and orientation: state the mass and its offset from the carriage; state horizontal or vertical.</li>
+<li>Speed: apply the formula and pick the lead; state the duty cycle.</li>
+<li>Accuracy: standard positioning accuracy &plusmn;0.01 mm and repeatability 0.003&ndash;0.01 mm, or a C / P grade if the tolerance demands it.</li>
+<li>Environment: dust, chips, glue or corrosion &rarr; enclosure type.</li>
 </ol>
-<p>Result: a compact ball screw module, 5&nbsp;mm lead, standard accuracy class. No need to pay for a ground screw here, because the tolerance does not demand &plusmn;0.005&nbsp;mm.</p>
 
 <h2>What to send when you request a quote</h2>
 <table>
-<thead><tr><th>Item</th><th>Example</th></tr></thead>
+<thead><tr><th>Item</th><th>Your value</th></tr></thead>
 <tbody>
-<tr><td>Effective stroke</td><td>150 mm</td></tr>
-<tr><td>Orientation</td><td>Vertical, carriage facing out</td></tr>
-<tr><td>Moving mass and offset</td><td>1.2 kg at 60 mm</td></tr>
-<tr><td>Required repeatability</td><td>&plusmn;0.01 mm</td></tr>
-<tr><td>Duty cycle</td><td>900 cycles/h, 16 h/day</td></tr>
-<tr><td>Motor preference</td><td>NEMA 24 servo, or supplier standard</td></tr>
-<tr><td>Envelope limit</td><td>Overall length under 320 mm</td></tr>
+<tr><td>Effective stroke</td><td>mm</td></tr>
+<tr><td>Orientation</td><td>Horizontal / vertical</td></tr>
+<tr><td>Moving mass and offset</td><td>kg, mm from carriage</td></tr>
+<tr><td>Speed at the carriage</td><td>mm/s</td></tr>
+<tr><td>Required repeatability</td><td>mm</td></tr>
+<tr><td>Duty cycle</td><td>cycles/h, h/day</td></tr>
+<tr><td>Environment</td><td>Dust / chips / glue / corrosion</td></tr>
+<tr><td>Motor preference</td><td>Servo or stepper, or supplier standard</td></tr>
 </tbody>
 </table>
 
 <h2>Frequently asked</h2>
-<h3>What accuracy do I need?</h3>
-<p>About one third of your placement tolerance. &plusmn;0.1&nbsp;mm placement &rarr; &plusmn;0.03&nbsp;mm repeatability.</p>
-<h3>How does duty cycle change the choice?</h3>
-<p>It sets service life. Above roughly 1500 cycles per hour, size up the screw and nut or shorten lubrication intervals.</p>
-<h3>Ball screw or belt for a probe axis?</h3>
-<p>Ball screw. On a tester the probe position is part of the measurement, so belt elasticity becomes measurement uncertainty.</p>
-<h3>Why does the supplier ask about cantilever load?</h3>
-<p>Because an offset mass creates a moment on the guide. 5&nbsp;kg at 200&nbsp;mm loads the rail far harder than 5&nbsp;kg centred.</p>
+<h3>How do I size a linear module?</h3>
+<p>Five questions in order: stroke, load and orientation, speed, accuracy, environment.</p>
+<h3>What accuracy can KINX hold?</h3>
+<p>Positioning accuracy &plusmn;0.01&nbsp;mm, repeatability 0.003&ndash;0.01&nbsp;mm. KK60 and KK86 add C and P grades with tighter repeatability.</p>
+<h3>How do I calculate speed?</h3>
+<p>mm/s = rpm &divide; 60 &times; lead (mm).</p>
+<h3>Which environment needs which enclosure?</h3>
+<p>Fully enclosed, semi-enclosed or bellows, decided by dust, chips, glue and corrosion risk.</p>
 
-<h2>Get a datasheet</h2>
-<p>KINX builds ball screw and belt driven modules in Dongguan, China, with custom stroke lengths and roughly 2000 stock models across screw support seats, ball screws, linear guides and couplings. Send the seven rows in the table above and you get a datasheet and a quotation back.</p>
-<p><a class="cta" href="https://wa.me/8613411177757">Request a datasheet on WhatsApp</a></p>
+<h2>Get a proposal in 6 hours</h2>
+<p>Send the rows above and KINX comes back with a proposal in 6 hours. Standard KK60 and KK86, 50&ndash;100 units: 2&ndash;3 days; rush orders 1&ndash;2 days. Embedded modules GTH5/8: 3&ndash;4 days; GTH12: 5&ndash;6 days. Full range on the <a href="https://hello532.github.io/kinxfa/kk-modules.html">KK series page</a> and the <a href="https://hello532.github.io/kinxfa/how-to-choose.html">product-site selection guide</a>.</p>
+<p><a class="cta" href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> <a class="cta alt" href="mailto:kinxauto@gmail.com">Email kinxauto@gmail.com</a></p>
 </div>
-<footer><div class="wrap">KINX Linear Modules &middot; Dongguan, Guangdong, China &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
+</main>
+<footer><div class="wrap">KINX &middot; Dongguan, Guangdong, China &middot; <a href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> &middot; <a href="mailto:kinxauto@gmail.com">kinxauto@gmail.com</a> &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
 </body>
 </html>

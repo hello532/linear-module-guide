@@ -3,115 +3,101 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sourcing Linear Modules in Malaysia and Vietnam | KINX</title>
-<meta name="description" content="What buyers in Malaysia and Vietnam should check when sourcing linear modules: lead time, local stock, documentation and total landed cost.">
+<title>Sourcing Linear Modules Direct From the Factory | KINX</title>
+<meta name="description" content="What to prepare before you contact a linear module factory directly: the five sizing questions, drawing check, and the documents to ask back.">
 <link rel="canonical" href="https://hello532.github.io/linear-module-guide/guides/linear-module-supplier-southeast-asia.html">
 <style>
-:root{--ink:#1a1a1a;--muted:#555;--line:#e5e5e5;--accent:#0b5fff}
+:root{--ink:#1a1d21;--mut:#5b6470;--line:#e3e7ec;--acc:#0b6bcb}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+body{margin:0;font:16px/1.7 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
 .wrap{max-width:820px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);padding:18px 0}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{font-weight:700;text-decoration:none;color:var(--ink)}
-nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
-nav a:hover{color:var(--accent)}
-h1{font-size:30px;line-height:1.3;margin:32px 0 8px}
+a{color:var(--acc)}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;padding:8px 14px;z-index:10}
+.skip:focus{left:8px;top:8px;border:1px solid var(--acc)}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+h1{font-size:30px;line-height:1.3;margin:28px 0 8px}
 h2{font-size:21px;margin:34px 0 10px}
 h3{font-size:17px;margin:22px 0 6px}
-p,li{color:#222}
-.lede{font-size:18px;color:var(--muted);margin-bottom:8px}
+.lede{font-size:18px;color:var(--mut);margin-bottom:8px}
 table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}
 th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
-th{background:#fafafa;font-weight:600}
-.cta{display:inline-block;background:var(--accent);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;margin:8px 0}
-.crumb{font-size:13px;color:var(--muted);margin-top:18px}
-.crumb a{color:var(--muted)}
-footer{border-top:1px solid var(--line);margin-top:48px;padding:22px 0;font-size:14px;color:var(--muted)}
-.note{background:#f7f9ff;border-left:3px solid var(--accent);padding:12px 16px;margin:18px 0;font-size:15px}
+th{background:#f7f9fb;font-weight:600}
+.cta{display:inline-block;background:var(--acc);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 10px 6px 0}
+.cta.alt{background:#fff;color:var(--acc);border:2px solid var(--acc)}
+nav.bc{font-size:14px;color:var(--mut);padding-top:16px}
+footer{border-top:1px solid var(--line);margin-top:48px;padding:22px 0;font-size:14px;color:var(--mut)}
+.note{background:#f7f9ff;border-left:3px solid var(--acc);padding:12px 16px;margin:18px 0;font-size:15px}
+ul li{margin:5px 0}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Should I buy linear modules from a local distributor or direct from a China factory?","acceptedAnswer":{"@type":"Answer","text":"A local distributor in Malaysia or Vietnam holds stock and can replace a failed unit in days, which matters when a production line is down. A China factory quotes lower unit prices and handles custom stroke lengths, but adds shipping and customs time. Many buyers split it: standard sizes locally for spares, custom axes direct from the factory."}},
-{"@type":"Question","name":"What documents should I ask for before ordering?","acceptedAnswer":{"@type":"Answer","text":"Ask for the dimensional drawing in STEP format, the accuracy and repeatability spec, the load and moment rating curves, the rail and screw brand used, and the inspection report for the delivered batch. If a supplier cannot provide a STEP file, integrating the axis into your machine design will cost you time later."}},
-{"@type":"Question","name":"How long is a typical lead time for a custom stroke linear module?","acceptedAnswer":{"@type":"Answer","text":"For a supplier that stocks profiles and rails, a custom stroke single axis is commonly 2 to 4 weeks of production plus transit. Sea freight from South China to Port Klang or Ho Chi Minh City is usually 1 to 2 weeks; air freight cuts that to days at a higher cost. Anything quoted under a week for a genuinely custom length deserves a follow-up question."}},
-{"@type":"Question","name":"Is it worth paying more for a European brand?","acceptedAnswer":{"@type":"Answer","text":"It depends on what fails first in your application. For high duty cycle, high precision, or safety-relevant axes, the documentation and consistency of an established brand reduces risk. For pick and place, testing jigs, and light assembly work at moderate duty, a well-specified Asian module with named rail and screw components usually performs adequately at a lower cost."}}
-]}
+{"@type":"Question","name":"What should I prepare before contacting a linear module factory?","acceptedAnswer":{"@type":"Answer","text":"Five answers: effective stroke, moving load and mounting orientation, speed, required accuracy, and environment. A machine drawing or the mounting pattern you are matching is the other thing that speeds up a quote."}},
+{"@type":"Question","name":"What should I ask the factory to send back?","acceptedAnswer":{"@type":"Answer","text":"The dimensional drawing for the exact model and stroke, the accuracy figures, the motor adaptation for the series, and the delivery time for your quantity. KINX publishes accuracy, stroke ranges and delivery times and can confirm the fit against your drawing."}},
+{"@type":"Question","name":"Can KINX modules fit a machine designed around another brand?","acceptedAnswer":{"@type":"Answer","text":"KINX modules are built with matching dimensions for THK SKR/KR, PMI KM and MISUMI C-KS series. Send your drawing and the fit is checked against the module before you order."}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"Home","item":"https://hello532.github.io/linear-module-guide/"},
-{"@type":"ListItem","position":2,"name":"Guides","item":"https://hello532.github.io/linear-module-guide/"},
-{"@type":"ListItem","position":3,"name":"Sourcing in Malaysia and Vietnam","item":"https://hello532.github.io/linear-module-guide/guides/linear-module-supplier-southeast-asia.html"}
-]}
+{"@type":"ListItem","position":2,"name":"Guides","item":"https://hello532.github.io/linear-module-guide/#guides"},
+{"@type":"ListItem","position":3,"name":"Sourcing Direct From the Factory"}]}
 </script>
 </head>
 <body>
-<header><div class="wrap">
-<a class="logo" href="../index.html">KINX Linear Modules</a>
-<nav>
-<a href="what-is-a-linear-module.html">Basics</a>
-<a href="ball-screw-vs-belt-driven.html">Ball screw vs belt</a>
-<a href="linear-module-for-assembly-machine.html">Sizing</a>
-</nav>
-</div></header>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap"><strong><a href="../index.html" style="text-decoration:none;color:inherit">KINX Linear Modules</a></strong><span style="font-size:14px;color:#5b6470"><a href="https://hello532.github.io/kinxfa/">Product site &rarr;</a></span></div></header>
+<main id="main">
 <div class="wrap">
-<h1>Sourcing Linear Modules in Malaysia and Vietnam</h1>
-<p class="lede">A practical guide for machine builders and integrators deciding between a local distributor and a direct factory purchase.</p>
+<nav class="bc" aria-label="Breadcrumb"><a href="../index.html">Home</a> &rsaquo; Guides &rsaquo; Sourcing Direct From the Factory</nav>
+<h1>Sourcing linear modules direct from the factory</h1>
+<p class="lede">A short checklist for machine builders who want to go straight to the manufacturer instead of through a distributor.</p>
 
-<h2>The two supply routes</h2>
-<p>If you build automation equipment in Penang, Johor, Ho Chi Minh City or Hanoi, you have two realistic ways to buy a linear axis. Local distributors carry stock of standard sizes and can hand you a replacement in days. Chinese factories quote lower unit prices, cut custom stroke lengths to order, and ship in 2 to 4 weeks plus transit.</p>
-<p>Neither route is universally better. The right answer depends on whether your bottleneck is downtime cost or unit cost.</p>
-
+<h2>What to prepare before you write</h2>
+<p>A factory quote is only as good as the inputs. Prepare these five answers and the first reply can be a proposal instead of a question:</p>
 <table>
-<thead><tr><th>Factor</th><th>Local distributor</th><th>Direct from China factory</th></tr></thead>
+<thead><tr><th>Item</th><th>What to write</th></tr></thead>
 <tbody>
-<tr><td>Unit price</td><td>Higher, includes local margin and stock cost</td><td>Lower, especially at 5+ units</td></tr>
-<tr><td>Replacement speed</td><td>Days, from local stock</td><td>Weeks, including transit and customs</td></tr>
-<tr><td>Custom stroke</td><td>Often not available, or ordered in anyway</td><td>Standard practice</td></tr>
-<tr><td>Technical support</td><td>Local language, on-site visits possible</td><td>Remote, usually via email or WhatsApp</td></tr>
-<tr><td>Minimum order</td><td>Single units</td><td>Varies; single units common for standard models</td></tr>
-<tr><td>Best for</td><td>Spares, urgent line-down, first prototype</td><td>Series builds, custom axes, cost-driven projects</td></tr>
+<tr><td>Effective stroke</td><td>The usable travel in mm, plus the envelope you have</td></tr>
+<tr><td>Load and orientation</td><td>Moving mass, its offset from the carriage, horizontal or vertical mounting</td></tr>
+<tr><td>Speed</td><td>The speed you need at the carriage; lead sets the trade against thrust and resolution</td></tr>
+<tr><td>Accuracy</td><td>The repeatability your process needs; positioning accuracy if the axis measures</td></tr>
+<tr><td>Environment</td><td>Dust, chips, glue splash or corrosion risk &mdash; this picks the enclosure</td></tr>
 </tbody>
 </table>
+<p>If you are matching a module already designed into a machine, add the drawing or mounting pattern. KINX modules are built with <strong>matching dimensions</strong> for THK SKR/KR, PMI KM and MISUMI C-KS series. Send your drawing and the fit is checked against the module before you order.</p>
 
-<div class="note">A common working pattern: qualify a custom axis direct from the factory for your series machine, and keep one standard-size spare from a local distributor for emergency swaps.</div>
+<div class="note">Mounting dimensions are confirmed against your drawing, model by model. Do not assume a fit from a series name alone &mdash; send the drawing and let it be checked.</div>
 
-<h2>What to verify before you order</h2>
-<h3>Documentation</h3>
-<p>Request the dimensional drawing as a STEP file, not a PDF. Without a 3D model you will spend engineering hours re-modelling the axis to fit your frame. Also ask for the accuracy and repeatability figures, the load and moment rating curves, and the brand of the rail and the screw inside the module.</p>
-
-<h3>Component transparency</h3>
-<p>A module is only as good as the rail, the screw and the bearings inside it. A supplier who names those components is easier to evaluate than one who only publishes an overall accuracy number. If the internals are unnamed, ask directly.</p>
-
-<h3>Landed cost, not unit price</h3>
-<p>Compare total landed cost: unit price, freight, import duty, and the engineering time you will spend on integration. A cheaper module that arrives without a STEP file and without a load curve can end up costing more once your engineer has spent two days on it.</p>
-
-<h3>Inspection evidence</h3>
-<p>Ask what is measured on the delivered batch and whether you receive the report. Critical parts held to a stated tolerance mean little without a measurement record for the units you actually receive.</p>
-
-<h2>Lead time reality check</h2>
-<p>For a supplier that stocks aluminium profiles and rails, a custom stroke single axis is commonly 2 to 4 weeks in production. Sea freight from South China to Port Klang or Ho Chi Minh City typically adds 1 to 2 weeks; air freight reduces that to days at higher cost. If a quote promises a genuinely custom length in under a week, ask what is already in stock and what is being modified.</p>
-
-<h2>When a European brand is worth the premium</h2>
-<p>For high duty cycle axes running continuously, for precision below the tens of microns, or for anything safety-relevant, the documentation depth and batch-to-batch consistency of an established brand reduces project risk in a way that is hard to price. For pick and place, testing jigs and light assembly work at moderate duty, a well-specified Asian module with named internals usually performs adequately at a lower cost.</p>
-
-<h2>Questions worth asking any supplier</h2>
+<h2>What to ask back</h2>
 <ul>
-<li>Can you send a STEP file for this model with my stroke length?</li>
-<li>What rail and screw brands are inside, and can they be substituted?</li>
-<li>What is the repeatability, and is that figure measured or calculated?</li>
-<li>What is the rated moment load in each direction for my mounting orientation?</li>
-<li>What is in stock right now, and what is made to order?</li>
-<li>What is the warranty, and who pays freight on a warranty replacement?</li>
+<li>The dimensional drawing for the exact model and stroke.</li>
+<li>The accuracy figures, stated separately for repeatability and positioning accuracy.</li>
+<li>The stroke range of the series you are being quoted &mdash; which lengths are standard and which are custom.</li>
+<li>The motor adaptation (servo wattages and stepper frame sizes).</li>
+<li>The delivery time for your quantity, and whether a rush option exists.</li>
+<li>Which applications the modules have already shipped into.</li>
 </ul>
 
-<h2>Getting a quote from us</h2>
-<p>Send the stroke, the payload, the orientation, the target repeatability, and the duty cycle. That is enough for a datasheet and a price. We ship from Dongguan, China, and cut custom stroke lengths as standard practice.</p>
-<p><a class="cta" href="https://wa.me/8613411177757">Request a datasheet on WhatsApp</a></p>
+<h2>What KINX publishes</h2>
+<p>So you can check these before you write:</p>
+<ul>
+<li>Positioning accuracy &plusmn;0.01&nbsp;mm; repeatability 0.003&ndash;0.01&nbsp;mm.</li>
+<li>KK60 and KK86 in C and P accuracy grades, with the grade figures listed in the <a href="linear-module-for-assembly-machine.html">sizing guide</a>.</li>
+<li>Stroke ranges: KK50 standard strokes 70 / 120 / 170 / 220&nbsp;mm; KK60 20&ndash;810&nbsp;mm any length; KK86 50&ndash;1310&nbsp;mm any length.</li>
+<li>Production models KK5002; KK6005 / KK6010 / KK6020; KK8610 / KK8620; and KK10020, expected early 2026.</li>
+<li>Motor adaptation: KK50 servo 50/100&nbsp;W, stepper 42; KK60 servo 50/100/200/400&nbsp;W, stepper 42/57/60; KK86 servo 50/100/200/400/750&nbsp;W, stepper 57/60/86.</li>
+<li>Delivery: proposal in 6 hours; standard KK60/KK86, 50&ndash;100 units in 2&ndash;3 days with rush orders in 1&ndash;2 days; embedded modules GTH5/8 in 3&ndash;4 days and GTH12 in 5&ndash;6 days; fastest delivery 24 hours.</li>
+</ul>
+<p>Shipped and in service: vision labeling machines and medical equipment. These are completed orders, not target markets.</p>
 
-<p class="crumb"><a href="../index.html">Home</a> &rsaquo; Guides &rsaquo; Sourcing in Malaysia and Vietnam</p>
+<h2>Why go direct</h2>
+<p>Three things are different when you buy from the manufacturer rather than a reseller: custom stroke lengths are routine rather than special orders, the accuracy and stroke figures come from the people who build the axis, and the mounting dimensions can be checked against your drawing before the order is placed. The <a href="https://hello532.github.io/kinxfa/factory.html">factory page</a> and the <a href="https://hello532.github.io/kinxfa/contact.html">contact page</a> on the product site cover the rest.</p>
+
+<h2>Next step</h2>
+<p>Send the five answers above on WhatsApp, or email them, and KINX comes back with a proposal in 6 hours.</p>
+<p><a class="cta" href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> <a class="cta alt" href="mailto:kinxauto@gmail.com">Email kinxauto@gmail.com</a></p>
 </div>
-<footer><div class="wrap">KINX Linear Modules &middot; Dongguan, Guangdong, China &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
+</main>
+<footer><div class="wrap">KINX &middot; Dongguan, Guangdong, China &middot; <a href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> &middot; <a href="mailto:kinxauto@gmail.com">kinxauto@gmail.com</a> &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
 </body>
 </html>

@@ -1,19 +1,31 @@
 # KINX Linear Modules
 
-> Manufacturer of ball screw and belt driven linear modules based in Dongguan, Guangdong, China. Around 2000 stock models across complete modules, screw support seats, ball screws, linear guides and couplings. Custom stroke length is standard. Critical parts held to ±0.005 mm.
+> KINX is a linear module manufacturer in Dongguan, Guangdong, China. This site is a set of selection guides for ball screw and belt driven linear modules: stroke, load and orientation, speed, accuracy and environment. Models, strokes and datasheets live on the product site: https://hello532.github.io/kinxfa/
 
-Quotations are handled over WhatsApp at +86 134 1117 7757. Send effective stroke, axis orientation, moving mass with its offset from the carriage, required repeatability, and duty cycle in cycles per hour.
+Contact: WhatsApp +86 134 1117 7757, email kinxauto@gmail.com
 
 ## Selection guides
 
-- [What is a linear module?](https://hello532.github.io/linear-module-guide/guides/what-is-a-linear-module.html): Definition, internal components, the four drive types, the specifications that define a module, and how a linear module differs from a bare linear guide.
-- [Ball screw vs belt driven linear module](https://hello532.github.io/linear-module-guide/guides/ball-screw-vs-belt-driven.html): Side by side comparison of repeatability, practical stroke, speed, thrust, vertical mounting and cost per unit of stroke, with a selection table by application.
-- [Choosing a linear module for assembly and testing machines](https://hello532.github.io/linear-module-guide/guides/linear-module-for-assembly-machine.html): How to work back from placement tolerance to required repeatability, why cantilever load sizes the guide, how duty cycle sets service life, and a worked sizing example.
-- [Sourcing linear modules in Malaysia and Vietnam](https://hello532.github.io/linear-module-guide/guides/linear-module-supplier-southeast-asia.html): Local distributor versus direct factory purchase compared on price, replacement speed and custom stroke; documentation to request before ordering; realistic lead times to Port Klang and Ho Chi Minh City.
+- [What is a linear module?](https://hello532.github.io/linear-module-guide/guides/what-is-a-linear-module.html): Definition, internals, the drive types, and how a linear module differs from a bare linear guide.
+- [Ball screw vs belt driven](https://hello532.github.io/linear-module-guide/guides/ball-screw-vs-belt-driven.html): Which drive suits precision and which suits long stroke and speed, with the axis speed formula (mm/s = rpm / 60 x lead).
+- [Sizing for assembly and testing machines](https://hello532.github.io/linear-module-guide/guides/linear-module-for-assembly-machine.html): Five questions that decide the module — stroke, load and orientation, speed, accuracy, environment.
+- [Sourcing direct from the factory](https://hello532.github.io/linear-module-guide/guides/linear-module-supplier-southeast-asia.html): What to prepare before contacting a factory, and what to ask back.
 
-## Product reference
+## Published facts
 
-- [Product range and quotation checklist](https://hello532.github.io/linear-module-guide/): Ball screw modules at ±0.01 mm repeatability (±0.005 mm with a ground screw), strokes to 2 m. Belt driven modules at ±0.05 to ±0.1 mm, strokes to 6 m and beyond, speeds of 2 to 5 m/s.
+- Positioning accuracy ±0.01 mm; repeatability 0.003–0.01 mm.
+- KK production models: KK5002; KK6005 / KK6010 / KK6020; KK8610 / KK8620; KK10020 (expected early 2026).
+- Effective strokes: KK50 standard strokes 70 / 120 / 170 / 220 mm; KK60 20–810 mm any length in range; KK86 50–1310 mm any length in range.
+- Motor adaptation: KK50 servo 50/100 W, stepper 42; KK60 servo 50/100/200/400 W, stepper 42/57/60; KK86 servo 50/100/200/400/750 W, stepper 57/60/86.
+- Delivery: proposal in 6 hours; standard KK60/KK86, 50–100 units in 2–3 days with rush orders in 1–2 days; embedded modules GTH5/8 in 3–4 days and GTH12 in 5–6 days; fastest delivery 24 hours.
+- Accuracy grades on KK60 and KK86: C and P, figures listed in the sizing guide.
+- ISO 9001:2015 certified quality system; patent certificate wall on site; listed central-government procurement supplier.
+- Shipped and in service: vision labeling machines and medical equipment. These are completed orders, not target markets.
+- Mounting dimensions match THK SKR/KR, PMI KM and MISUMI C-KS series; send your drawing for a fit check before ordering.
+
+## Product site
+
+- [KINX product site](https://hello532.github.io/kinxfa/): Models, strokes and datasheets for the KK series, belt driven modules and multi-axis systems.
 
 ## Optional
 
