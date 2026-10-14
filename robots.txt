@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://hello532.github.io/linear-module-guide/sitemap.xml

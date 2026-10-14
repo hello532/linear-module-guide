@@ -1,122 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What Is a Linear Module? Types and Internals | KINX</title>
-<meta name="description" content="A linear module is a pre-assembled single-axis actuator. The internals, the drive types, and how a module differs from a bare linear guide.">
-<link rel="canonical" href="https://hello532.github.io/linear-module-guide/guides/what-is-a-linear-module.html">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"What is a linear module?","acceptedAnswer":{"@type":"Answer","text":"A pre-assembled single-axis actuator: a linear guide, a drive element and a carriage packaged in one housing with a defined stroke and accuracy. Fit a motor and a load, and the axis is ready to use."}},
-{"@type":"Question","name":"How is a linear module different from a linear guide?","acceptedAnswer":{"@type":"Answer","text":"A linear guide only constrains motion and needs an external drive to move the load. A linear module contains its own drive, so fitting a motor makes the axis move by itself."}},
-{"@type":"Question","name":"Which drive types are available?","acceptedAnswer":{"@type":"Answer","text":"Ball screw modules such as the KK series, belt driven modules for long transfer axes, and embedded modules where the screw runs inside the slide table. Two or three single-axis modules combine into multi-axis systems."}},
-{"@type":"Question","name":"What accuracy does KINX publish?","acceptedAnswer":{"@type":"Answer","text":"Positioning accuracy of ±0.01 mm and repeatability of 0.003–0.01 mm. KK60 and KK86 ball screw modules are available in C and P accuracy grades."}},
-{"@type":"Question","name":"Where are KINX modules used?","acceptedAnswer":{"@type":"Answer","text":"Shipped applications include vision labeling machines and medical equipment. These are completed orders, not target markets."}}]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Home","item":"https://hello532.github.io/linear-module-guide/"},
-{"@type":"ListItem","position":2,"name":"Guides","item":"https://hello532.github.io/linear-module-guide/#guides"},
-{"@type":"ListItem","position":3,"name":"What Is a Linear Module"}]}
-</script>
-<style>
-:root{--ink:#1a1d21;--mut:#5b6470;--line:#e3e7ec;--acc:#0b6bcb}
-*{box-sizing:border-box}
-body{margin:0;font:16px/1.7 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink)}
-.wrap{max-width:820px;margin:0 auto;padding:0 20px}
-a{color:var(--acc)}
-.skip{position:absolute;left:-9999px;top:0;background:#fff;padding:8px 14px;z-index:10}
-.skip:focus{left:8px;top:8px;border:1px solid var(--acc)}
-header{border-bottom:1px solid var(--line)}
-header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
-h1{font-size:31px;line-height:1.3;margin:28px 0 10px}
-h2{font-size:22px;margin:34px 0 10px}
-h3{font-size:17px;margin:22px 0 6px}
-.lede{font-size:18px;color:var(--mut)}
-.verdict{background:#f4f8fd;border-left:3px solid var(--acc);padding:14px 18px;margin:22px 0;border-radius:0 6px 6px 0}
-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
-th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
-th{background:#f7f9fb;font-weight:600}
-nav.bc{font-size:14px;color:var(--mut);padding-top:16px}
-footer{border-top:1px solid var(--line);margin-top:48px;padding:24px 0;font-size:14px;color:var(--mut)}
-.cta{display:inline-block;background:var(--acc);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;margin:6px 10px 6px 0}
-.cta.alt{background:#fff;color:var(--acc);border:2px solid var(--acc)}
-ul li{margin:5px 0}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KINX Linear Modules — moved to kinxfa.com</title>
+<meta name="description" content="This page has moved to kinxfa.com — factory-direct ball screw and belt driven linear modules from Dongguan, China.">
+<link rel="canonical" href="https://kinxfa.com/pages/linear-modules">
+<meta http-equiv="refresh" content="0;url=https://kinxfa.com/pages/linear-modules">
+<meta name="robots" content="index,follow">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header><div class="wrap"><strong><a href="../index.html" style="text-decoration:none;color:inherit">KINX Linear Modules</a></strong><span style="font-size:14px;color:#5b6470"><a href="https://hello532.github.io/kinxfa/">Product site &rarr;</a></span></div></header>
-<main id="main">
-<div class="wrap">
-<nav class="bc" aria-label="Breadcrumb"><a href="../index.html">Home</a> &rsaquo; Guides &rsaquo; What Is a Linear Module</nav>
-<h1>What is a linear module?</h1>
-<p class="lede">The short version: someone already did the alignment work for you.</p>
-
-<div class="verdict">
-<strong>Definition.</strong> A linear module is a <strong>pre-assembled single-axis actuator</strong>. It packages a linear guide, a drive element (a ball screw or a toothed belt), a carriage and a housing into one unit with a defined stroke and a defined accuracy. You bolt on a motor and a load. The alternative is buying a rail, blocks, a drive, end supports and a coupling, then machining a base and aligning it all yourself.
-</div>
-
-<h2>What is inside one</h2>
-<ul>
-<li><strong>Housing</strong> &mdash; an aluminium or steel profile that carries the load path and keeps everything parallel.</li>
-<li><strong>Linear guide</strong> &mdash; a rail and bearing blocks that constrain the carriage to one axis and absorb side and moment loads.</li>
-<li><strong>Drive element</strong> &mdash; a ball screw or a toothed belt, which turns motor output into travel.</li>
-<li><strong>Carriage</strong> &mdash; the moving plate with a mounting pattern for your tool.</li>
-<li><strong>End blocks and support seats</strong> &mdash; bearing housings that locate the screw and take axial load.</li>
-<li><strong>Coupling and motor mount</strong> &mdash; connects your motor, usually through an adapter for common servo or stepper flanges.</li>
-</ul>
-<p>Buying it assembled matters because parallelism between the rail and the screw is the hard part. Get it wrong and the nut side-loads, friction rises and life drops. A module ships with that alignment already held to a documented tolerance.</p>
-
-<h2>Linear module vs bare linear guide</h2>
-<p>These get confused constantly, and the distinction is simple.</p>
-<table>
-<thead><tr><th></th><th>Bare linear guide</th><th>Linear module</th></tr></thead>
-<tbody>
-<tr><td>What it does</td><td>Constrains motion to one axis</td><td>Produces motion along one axis</td></tr>
-<tr><td>Has a drive?</td><td>No</td><td>Yes &mdash; ball screw or belt</td></tr>
-<tr><td>Needs external actuation?</td><td>Yes, something else must push it</td><td>No, fit a motor and it moves</td></tr>
-<tr><td>Level</td><td>Component</td><td>Subsystem</td></tr>
-<tr><td>You still design</td><td>Base, drive, alignment, end supports</td><td>Motor selection and tool mounting</td></tr>
-</tbody>
-</table>
-<p>Put plainly: a bare guide is a rail; a module is a rail that already knows how to move.</p>
-
-<h2>The main types</h2>
-<h3>Ball screw driven</h3>
-<p>A screw drives a nut fixed to the carriage. This is the precision-first choice: KINX publishes repeatability of 0.003&ndash;0.01&nbsp;mm, and KK60 and KK86 come in C and P accuracy grades. The <a href="https://hello532.github.io/kinxfa/kk-modules.html">KK series</a> covers KK50, KK60 and KK86.</p>
-<h3>Belt driven</h3>
-<p>A toothed belt moves the carriage between two pulleys. Built for long transfer strokes and high speed; accuracy is lower than a ball screw, because the belt is elastic under load.</p>
-<h3>Embedded modules</h3>
-<p>The screw runs inside the slide table, keeping the axis compact. KINX builds the GTH5/8 and GTH12 series.</p>
-<h3>Multi-axis systems</h3>
-<p>Two or three single-axis modules combine into multi-axis systems &mdash; XY, XYZ, or cantilever configurations. See <a href="https://hello532.github.io/kinxfa/multi-axis-systems.html">multi-axis systems</a> on the product site.</p>
-
-<h2>What the published specs mean</h2>
-<p><strong>Repeatability</strong> is how closely the axis returns to the same commanded point. <strong>Positioning accuracy</strong> is how close that point is to the true coordinate. KINX publishes positioning accuracy of &plusmn;0.01&nbsp;mm and repeatability of 0.003&ndash;0.01&nbsp;mm. The C and P grade figures for KK60 and KK86 are in the <a href="linear-module-for-assembly-machine.html">sizing guide</a>.</p>
-
-<h2>Shipped applications</h2>
-<p>KINX modules are in service in vision labeling machines and medical equipment. These are completed orders that have shipped, not target markets.</p>
-
-<h2>About KINX</h2>
-<p>KINX is a linear module manufacturer in Dongguan, Guangdong, China. ISO 9001:2015 certified quality system. Patent certificate wall on site. Listed central-government procurement supplier.</p>
-
-<h2>Frequently asked</h2>
-<h3>What is a linear module?</h3>
-<p>A pre-assembled single-axis actuator combining a guide, a drive element, a carriage and a housing. Fit a motor and a load and it works.</p>
-<h3>How is it different from a bare linear guide?</h3>
-<p>A guide only constrains motion and needs something else to push it. A module contains its own drive.</p>
-<h3>Which types exist?</h3>
-<p>Ball screw, belt driven, and embedded modules. Two or three single-axis modules combine into multi-axis systems.</p>
-<h3>What accuracy does KINX publish?</h3>
-<p>Positioning accuracy of &plusmn;0.01&nbsp;mm and repeatability of 0.003&ndash;0.01&nbsp;mm, with C and P grades on KK60 and KK86.</p>
-
-<h2>Get a proposal in 6 hours</h2>
-<p>Send the spec and KINX comes back with a proposal in 6 hours. Fastest delivery is 24 hours. Product site: <a href="https://hello532.github.io/kinxfa/linear-modules.html">module range</a>.</p>
-<p><a class="cta" href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> <a class="cta alt" href="mailto:kinxauto@gmail.com">Email kinxauto@gmail.com</a></p>
-</div>
-</main>
-<footer><div class="wrap">KINX &middot; Dongguan, Guangdong, China &middot; <a href="https://wa.me/8613411177757">WhatsApp +86 134 1117 7757</a> &middot; <a href="mailto:kinxauto@gmail.com">kinxauto@gmail.com</a> &middot; <a href="https://www.facebook.com/kinx.linearmodules">Facebook</a></div></footer>
+<p>This page has moved to <a href="https://kinxfa.com/pages/linear-modules">https://kinxfa.com/pages/linear-modules</a>. You will be redirected automatically.</p>
 </body>
 </html>
